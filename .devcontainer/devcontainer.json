@@ -1,0 +1,27 @@
+{
+    "name": "Python 3.10",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "."
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "esbenp.prettier-vscode",
+                "KevinRose.vsc-python-indent",
+                "EditorConfig.EditorConfig",
+                "ms-python.vscode-pylance",
+                "ms-python.python"
+            ],
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "zsh"
+            }
+        }
+    },
+    "runArgs": [
+        "--gpus",
+        "device=0",
+        "--shm-size=16g"
+    ],
+    "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}"
+}

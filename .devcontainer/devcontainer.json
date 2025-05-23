@@ -1,5 +1,5 @@
 {
-    "name": "Python 3.10",
+    "name": "ComfyUI DevEnv",
     "build": {
         "dockerfile": "Dockerfile",
         "context": "."
@@ -8,9 +8,6 @@
         "vscode": {
             "extensions": [
                 "esbenp.prettier-vscode",
-                "KevinRose.vsc-python-indent",
-                "EditorConfig.EditorConfig",
-                "ms-python.vscode-pylance",
                 "ms-python.python"
             ],
             "settings": {
@@ -19,9 +16,8 @@
         }
     },
     "runArgs": [
-        "--gpus",
-        "device=0",
-        "--shm-size=16g"
+        "--gpus=all"
     ],
+    "postCreateCommand": "pip install -r requirements.txt",
     "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}"
 }

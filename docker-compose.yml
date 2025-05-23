@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  selenium:
+    image: selenium/standalone-chrome
+    container_name: selenium
+    ports:
+      - "4444:4444"
+      - "7900:7900"
+    networks:
+      - selenium-net
+    volumes:
+      - /.config/google-chrome:/home/tighug/.config/google-chrome
+    shm_size: 2g
+
+  gohttpserver:
+    image: codeskyblue/gohttpserver
+    container_name: gohttpserver
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./ComfyUI/output:/app/public
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+
+networks:
+  selenium-net:
+    driver: bridge

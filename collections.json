@@ -1,0 +1,22 @@
+[
+  {
+    "url": "https://civitai.com/collections/8697950?tag=character&baseModels=Illustrious",
+    "save_dir": "./ComfyUI/models/loras/SDXL/IL/character/"
+  },
+  {
+    "url": "https://civitai.com/collections/8697950?tag=style&baseModels=Illustrious",
+    "save_dir": "./ComfyUI/models/loras/SDXL/IL/style"
+  },
+  {
+    "url": "https://civitai.com/collections/8697950?tag=concept&baseModels=Illustrious",
+    "save_dir": "./ComfyUI/models/loras/SDXL/IL/concept"
+  },
+  {
+    "url": "https://civitai.com/collections/8697950?tag=clothing&baseModels=Illustrious",
+    "save_dir": "./ComfyUI/models/loras/SDXL/IL/clothing"
+  },
+  {
+    "url": "https://civitai.com/collections/8697950?tag=poses&baseModels=Illustrious",
+    "save_dir": "./ComfyUI/models/loras/SDXL/IL/poses"
+  }
+]

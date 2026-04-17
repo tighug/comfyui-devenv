@@ -160,3 +160,6 @@ cython_debug/
 #.idea/
 
 ComfyUI/
+.Trash-0/
+easy_wan_video/
+my_workflows

@@ -1,18 +1,15 @@
-import asyncio
-import os
 import json
+import os
 import re
 import subprocess
 import time
-from urllib.parse import parse_qs, unquote, urlparse
+
 from bs4 import BeautifulSoup
+from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from dotenv import load_dotenv
 
 # 設定
 SELENIUM_REMOTE_URL = "http://selenium:4444/wd/hub"  # Remote WebDriver の URL
@@ -31,10 +28,8 @@ def create_driver():
     options.add_argument("--user-data-dir=/home/seluser/selenium")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
-    return webdriver.Remote(
-        command_executor=SELENIUM_REMOTE_URL,
-        options=options
-    )
+    return webdriver.Remote(command_executor=SELENIUM_REMOTE_URL, options=options)
+
 
 # GitHub経由でCivitaiにログイン
 def login_to_civitai(driver):
@@ -49,7 +44,9 @@ def login_to_civitai(driver):
     )
     github_login_btn.click()
 
-    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "login_field")))
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.ID, "login_field"))
+    )
     driver.find_element(By.ID, "login_field").send_keys(GITHUB_USERNAME)
     driver.find_element(By.ID, "password").send_keys(GITHUB_PASSWORD)
     driver.find_element(By.NAME, "commit").click()
@@ -58,7 +55,9 @@ def login_to_civitai(driver):
     try:
         print("GitHub Mobileリンクを探しています...")
         github_mobile_link = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, "a[data-test-selector='gh-mobile-link']"))
+            EC.element_to_be_clickable(
+                (By.CSS_SELECTOR, "a[data-test-selector='gh-mobile-link']")
+            )
         )
         github_mobile_link.click()
         print("GitHub Mobile 認証ページに遷移しました。")
@@ -100,9 +99,11 @@ def extract_version_ids(driver, collection_url):
             if m:
                 vids.add(m.group(1))
 
-        driver.execute_script("arguments[0].scrollIntoView({behavior: 'auto', block: 'end'});", elements[-1])
+        driver.execute_script(
+            "arguments[0].scrollIntoView({behavior: 'auto', block: 'end'});",
+            elements[-1],
+        )
         time.sleep(1)
-
 
     return list(vids)
 
@@ -119,9 +120,11 @@ def download_from_civitai(vids, save_dir):
             "-s",
             "-OJ",
             "-L",
-            "--range", "0-0",
-            "-w", "%{filename_effective}",
-            url
+            "--range",
+            "0-0",
+            "-w",
+            "%{filename_effective}",
+            url,
         ]
         result = subprocess.run(command1, capture_output=True, text=True)
         filename = result.stdout.strip()
@@ -133,16 +136,9 @@ def download_from_civitai(vids, save_dir):
 
         # modelデータを取得
         print(f"\n{filename}")
-        command3 = [
-            "curl",
-            "-L",
-            "-S",
-            "-#",
-            "-C", "-",
-            "-o", save_path,
-            url
-        ]
+        command3 = ["curl", "-L", "-S", "-#", "-C", "-", "-o", save_path, url]
         subprocess.run(command3, text=True)
+
 
 if __name__ == "__main__":
     try:
@@ -162,7 +158,7 @@ if __name__ == "__main__":
             print("=" * 80)
             download_from_civitai(vids, save_dir)
             print()
-        
+
         print("✅ すべてのモデルをダウンロードしました。\n")
     finally:
         driver.quit()

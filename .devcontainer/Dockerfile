@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     exa \
     ffmpeg \
     git \
+    openssh-client \
     python3-dev \
     python3-pip \
     python3-tk \

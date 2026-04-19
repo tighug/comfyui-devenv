@@ -6,10 +6,6 @@
     },
     "customizations": {
         "vscode": {
-            "extensions": [
-                "esbenp.prettier-vscode",
-                "ms-python.python"
-            ],
             "settings": {
                 "terminal.integrated.defaultProfile.linux": "zsh"
             }

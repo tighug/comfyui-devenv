@@ -1,15 +1,14 @@
 # comfyui-devenv
 
-ComfyUI を DevContainer で動かす環境と、自作のワークフロー。ワークフローの一覧、フォルダの役割、コマンドの使い方は README.md にあるので、作業前に読む。
+ComfyUI を docker compose で動かす環境と、自作のワークフロー。ワークフローの一覧、フォルダの役割、コマンドの使い方は README.md にあるので、作業前に読む。
 
 ## 動かし方
 
-- ComfyUI はコンテナの中で動き、ホストの `http://localhost:8188` に転送されている
-- ホストの Windows には Python がない。スクリプトはコンテナの中で動かす。コンテナは DevContainer のラベルで探す
+- ComfyUI は compose の `comfyui` コンテナで動き、ホストの `http://localhost:8188` に出している
+- ホストの Windows には Python がない。スクリプトはコンテナの中で動かす
 
   ```bash
-  C=$(docker ps -q --filter "label=devcontainer.local_folder=c:\\win-workspace\\comfyui-devenv")
-  MSYS_NO_PATHCONV=1 docker exec -w /workspaces/comfyui-devenv $C make validate
+  MSYS_NO_PATHCONV=1 docker exec -w /workspaces/comfyui-devenv comfyui make validate
   ```
 
   Git Bash から `docker exec` するときは `MSYS_NO_PATHCONV=1` を付ける（付けないと `/workspaces/...` が Windows のパスに書き換わる）

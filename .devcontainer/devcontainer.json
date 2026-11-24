@@ -1,22 +1,19 @@
 {
     "name": "ComfyUI DevEnv",
-    "build": {
-        "dockerfile": "Dockerfile",
-        "context": "."
-    },
+    // ComfyUI は compose の comfyui サービスとして常駐している。VS Code はそこに入るだけ
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "comfyui",
+    "runServices": ["comfyui"],
+    "workspaceFolder": "/workspaces/comfyui-devenv",
+    // compose の command（ComfyUI の起動）を sleep に置き換えない
+    "overrideCommand": false,
+    // VS Code を閉じても ComfyUI を止めない
+    "shutdownAction": "none",
     "customizations": {
         "vscode": {
             "settings": {
                 "terminal.integrated.defaultProfile.linux": "zsh"
             }
         }
-    },
-    "runArgs": [
-        "--gpus=all"
-    ],
-    "containerEnv": {
-        "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"
-    },
-    "postCreateCommand": "pip install -r requirements.txt",
-    "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}"
+    }
 }

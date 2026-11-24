@@ -1,9 +1,42 @@
-version: "3.8"
+name: comfyui-devenv
 
 services:
+  # ComfyUI。Docker Desktop が起動すると一緒に立ち上がる（restart: unless-stopped）
+  # VS Code からは DevContainer としてこのコンテナに入る（.devcontainer/devcontainer.json）
+  comfyui:
+    build:
+      context: ./.devcontainer
+      dockerfile: Dockerfile
+    container_name: comfyui
+    init: true
+    restart: unless-stopped
+    working_dir: /workspaces/comfyui-devenv
+    command: ["sh", "./scripts/container_start.sh"]
+    ports:
+      - "127.0.0.1:8188:8188"
+    environment:
+      PYTORCH_CUDA_ALLOC_CONF: expandable_segments:True
+    volumes:
+      - .:/workspaces/comfyui-devenv
+      # pip で入れたパッケージ（カスタムノードの依存も）と、ホームの設定・キャッシュ
+      # （LoRA Manager の設定、Hugging Face のモデルなど）を、コンテナを作り直しても残す
+      - packages:/usr/local/lib/python3.10/dist-packages
+      # pip で入れたコマンド（uv、hf など）。Manager は uv を使う設定なので、これがないと起動できない
+      - bin:/usr/local/bin
+      - home:/root
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  # 以下は普段は動かさない。使うときは docker compose --profile tools up -d
   selenium:
     image: selenium/standalone-chrome
     container_name: selenium
+    profiles: [tools]
     ports:
       - "4444:4444"
       - "7900:7900"
@@ -16,6 +49,7 @@ services:
   gohttpserver:
     image: codeskyblue/gohttpserver
     container_name: gohttpserver
+    profiles: [tools]
     ports:
       - "8000:8000"
     volumes:
@@ -23,6 +57,14 @@ services:
     stdin_open: true
     tty: true
     restart: unless-stopped
+
+volumes:
+  packages:
+    name: comfyui-devenv-packages
+  bin:
+    name: comfyui-devenv-bin
+  home:
+    name: comfyui-devenv-home
 
 networks:
   selenium-net:

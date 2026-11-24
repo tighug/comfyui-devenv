@@ -2,20 +2,27 @@
 
 ## Usage
 
+ComfyUI は docker compose の `comfyui` サービスとして動く。`restart: unless-stopped` なので、一度立ち上げれば Docker Desktop の起動と一緒に立ち上がる。VS Code を開かなくても http://localhost:8188 につながる。
+
 ```bash
-# Download ComfyUI
-make download
+# 初回だけ
+make download            # ComfyUI を clone する
+docker compose up -d     # イメージを作って立ち上げる。初回は requirements.txt を入れるので時間がかかる
+make link                # コンテナの中で。ワークフローとモデルのリンクを張る
 
-# Setup
-cd ComfyUI; \
-uv venv; \
-source .venv/bin/activate; \
-uv add -r requirements.txt; \
-uv sync
-
-# Start
-python main.py
+# 普段
+docker compose logs -f comfyui   # ログを見る
+docker compose restart comfyui   # 再起動（モデルやカスタムノードを入れたあと）
+docker compose stop comfyui      # 止める。次に Docker Desktop を起動しても立ち上がらない
+docker compose start comfyui     # 止めたものを立ち上げ直す
+docker exec -it comfyui zsh      # 中に入る
 ```
+
+コードを直すときは、VS Code の「Reopen in Container」で同じコンテナに入る（`.devcontainer/devcontainer.json`）。VS Code を閉じても ComfyUI は止まらない。
+
+pip のパッケージ（Manager がカスタムノードのために入れたものも）、pip で入ったコマンド（`/usr/local/bin`。Manager が使う uv もここ）、`/root`（LoRA Manager の設定、Hugging Face のキャッシュなど）はボリュームに置いているので、`docker compose up -d --build` でイメージを作り直しても消えない。`requirements.txt` はパッケージのボリュームが空のときだけ入れる（`scripts/container_start.sh`）。入れ直したいときは、コンテナの中で `pip install -r requirements.txt` する。
+
+selenium と gohttpserver は普段は動かさない。使うときは `docker compose --profile tools up -d`。
 
 ## フォルダ
 

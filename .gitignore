@@ -160,6 +160,8 @@ cython_debug/
 #.idea/
 
 ComfyUI/
+# モデル（ComfyUI/models はここへのリンク。make link で張る）
+/models/
 .Trash-0/
 .history/
 easy_wan_video/

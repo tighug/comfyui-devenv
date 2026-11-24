@@ -1,9 +1,18 @@
 download:
 	git clone git@github.com:Comfy-Org/ComfyUI.git
 
-link:
+link: link-models
 	ln -sr ./workflows ./ComfyUI/user/default/workflows
 	ln -sr ./subgraphs ./ComfyUI/user/default/subgraphs
+
+link-models:
+	@# モデルは clone の外の ./models に置く。clone したての ComfyUI/models は置き場所の目印のファイルしかないので消してリンクにする
+	@if [ ! -L ./ComfyUI/models ]; then \
+		if find ./ComfyUI/models -type f ! -name 'put_*_here' | grep -q .; then \
+			echo "ComfyUI/models にモデルがあるので止めた。./models に移してからやり直す"; exit 1; \
+		fi; \
+		rm -r ./ComfyUI/models && ln -sr ./models ./ComfyUI/models; \
+	fi
 
 setup:
 	python3 ./scripts/setup.py

@@ -17,6 +17,16 @@ link-models:
 setup:
 	python3 ./scripts/setup.py
 
+# モデルの一覧（models.lock.json）。入れた・消したあとに lock して、コミットする
+models-lock:
+	python3 ./scripts/models.py lock
+
+models-check:
+	python3 ./scripts/models.py check
+
+models-fetch:
+	python3 ./scripts/models.py fetch
+
 
 start:
 	python3 ./scripts/launch.py

@@ -9,6 +9,7 @@ ComfyUI は docker compose の `comfyui` サービスとして動く。`restart:
 make download            # ComfyUI を clone する
 docker compose up -d     # イメージを作って立ち上げる。初回は requirements.txt を入れるので時間がかかる
 make link                # コンテナの中で。ワークフローとモデルのリンクを張る
+make models-fetch        # コンテナの中で。models.lock.json のモデルを Civitai から落とす
 
 # 普段
 docker compose logs -f comfyui   # ログを見る
@@ -33,8 +34,30 @@ selenium と gohttpserver は普段は動かさない。使うときは `docker 
 | `workflows-api/` | `workflows/` を API 形式に変換したもの。`/prompt` に送って実行するとき、スクリプトで直すとき用          |
 | `scripts/`       | 起動、セットアップ、API 形式の書き出しと検証、実行                                                      |
 | `runs/`          | `make run` で取ってきた出力（Git の管理外）                                                             |
+| `models/`        | モデル（Git の管理外）。`make link` で `ComfyUI/models` をここへのリンクにする                          |
 
 `workflows-api/` を `workflows/` の中に置くと、画面のワークフロー一覧に API 形式のファイルも並んでしまうので分けている。
+
+## モデル
+
+入っているモデルは `models.lock.json` に書く。Civitai の版の ID、置く場所、SHA256 を固定しているので、作者が新しい版を出しても、Civitai でモデルが消されても、何が入っていたかは Git に残る。
+
+| 置き場所                 | 使い方                                                                                   |
+| ------------------------ | ---------------------------------------------------------------------------------------- |
+| Civitai                  | モデルを探す。気になるものをコレクションやいいねに入れておく（入れても落とされない）     |
+| LoRA Manager（ComfyUI）  | 落とす、消す、中身を見る。トリガーワードやプレビューもここで見る                         |
+| `models.lock.json`（Git） | 今入っているものの一覧。新しい PC や clone し直したあとは、これを元に落とし直す          |
+
+```bash
+# コンテナの中で
+make models-lock    # 入れた・消したあとに。models/ を読んで models.lock.json を書き直す。そのあとコミットする
+make models-check   # models.lock.json と models/ が同じか確かめる
+make models-fetch   # models.lock.json にあって models/ に無いものを Civitai から落とす（.env の CIVITAI_API_KEY を使う）
+```
+
+`models-lock` は LoRA Manager の `.metadata.json` から Civitai の情報を読み、無ければ SHA256 で Civitai に問い合わせる。Civitai に無いファイルは `local` に名前だけ書く（`models-fetch` では落とせない）。見るのは `checkpoints`、`loras`、`diffusion_models`、`embeddings`、`vae`、`controlnet`、`upscale_models` だけで、カスタムノードが自分で落とすもの（`SeeThrough` など）は書かない。
+
+`models-fetch` が失敗するのは、版が先行公開（Buzz 払い）になったときか、Civitai から消されたとき。表示されたページを開いて確かめる。
 
 ## ワークフロー
 

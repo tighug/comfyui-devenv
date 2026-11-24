@@ -163,3 +163,5 @@ ComfyUI/
 .Trash-0/
 .history/
 easy_wan_video/
+# scripts/run_workflow.py が取ってきた出力
+runs/

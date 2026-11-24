@@ -17,3 +17,7 @@ pull-api:
 
 validate:
 	python3 ./scripts/validate_workflows.py
+
+# 例: make run WF=I_T2I ARGS='--set "Positive.text=1girl, solo" --count 4 --no-eagle'
+run:
+	python3 ./scripts/run_workflow.py $(WF) $(ARGS)

@@ -24,7 +24,8 @@ python main.py
 | `workflows/`     | ワークフロー（UI 形式）。`make link` で `ComfyUI/user/default/workflows` にリンクする。画面の一覧に出る |
 | `subgraphs/`     | 自作のサブグラフ。`ComfyUI/user/default/subgraphs` にリンクする                                         |
 | `workflows-api/` | `workflows/` を API 形式に変換したもの。`/prompt` に送って実行するとき、スクリプトで直すとき用          |
-| `scripts/`       | 起動、セットアップ、API 形式の書き出しと検証                                                            |
+| `scripts/`       | 起動、セットアップ、API 形式の書き出しと検証、実行                                                      |
+| `runs/`          | `make run` で取ってきた出力（Git の管理外）                                                             |
 
 `workflows-api/` を `workflows/` の中に置くと、画面のワークフロー一覧に API 形式のファイルも並んでしまうので分けている。
 
@@ -51,6 +52,32 @@ python main.py
 
 「動く」は、`make validate` でノードとモデルがそろっていると確かめたもの。入力画像（`LoadImage`）は実行のたびに差し替えるので、ないと出ても気にしなくてよい。
 解像度プリセットは KJNodes の `custom_dimensions.json` に足していた自作の値（`7:4(1.75) - 1344x768` など）で、いまは初期状態に戻っている。
+
+## コマンドで実行する
+
+`workflows-api/` のワークフローを、値を差し替えて実行できる（`scripts/run_workflow.py`）。
+出力の画像は `runs/<日時>_<ワークフロー名>/` に取ってきて、実際に送った API 形式も `001_prompt.json` のように残す。
+
+```bash
+# I_T2I でプロンプトを変えて 4 枚。シードは毎回ランダム、Eagle には送らない
+make run WF=I_T2I ARGS='--set "Positive.text=1girl, solo, white_hair" --count 4 --no-eagle'
+
+# 手元の画像を I_Tagger に入れてタグを取る
+make run WF=I_Tagger ARGS='--image ./sample.png'
+
+# 送らずに、差し替えと検証だけする
+make run WF=I_T2I ARGS='--set "KSampler.cfg=6" --dry-run'
+```
+
+| オプション               | 中身                                                                                                       |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------- |
+| `--set "ノード.入力=値"` | ノードは画面のタイトル（`Positive`）、種類（`KSampler`）、`#ID` のどれかで指す。同じ名前が複数あると止まる |
+| `--count N`              | N 回実行する。シードを `--set` で決めていなければ、毎回ランダムにする                                      |
+| `--image P`              | 画像をアップロードして `LoadImage` に入れる                                                                |
+| `--no-eagle`             | Eagle Feeder のノードを外して実行する                                                                      |
+| `--dry-run`              | 差し替えと検証だけして、送らない                                                                           |
+
+送る前に `make validate` と同じ検証をして、問題があれば送らない。
 
 ## Eagle のトークン
 

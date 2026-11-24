@@ -1,0 +1,344 @@
+{
+  "1": {
+    "inputs": {
+      "ckpt_name": "waiIllustriousSDXL_v160.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "5": {
+    "inputs": {
+      "width": 1600,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "8": {
+    "inputs": {
+      "images": [
+        "116:99:22",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "112": {
+    "inputs": {
+      "group_mode": true,
+      "default_active": {
+        "__value__": [
+          {
+            "text": "XUER guangying",
+            "active": true
+          },
+          {
+            "text": "((4k,8k,Ultra HD)),((Masterpiece :1.2)),((Best quality :1.2)),((Detailed :1.5)),((Detailed background :1.5))",
+            "active": true
+          },
+          {
+            "text": "eye trail",
+            "active": true
+          },
+          {
+            "text": "flaming eyes",
+            "active": true
+          },
+          {
+            "text": "lightning eyes",
+            "active": true
+          }
+        ]
+      },
+      "allow_strength_adjustment": {
+        "__value__": []
+      },
+      "toggle_trigger_words": {
+        "__value__": [
+          {
+            "text": "Gl0ss_style",
+            "active": [
+              {
+                "text": "XUER guangying",
+                "active": true
+              },
+              {
+                "text": "((4k,8k,Ultra HD)),((Masterpiece :1.2)),((Best quality :1.2)),((Detailed :1.5)),((Detailed background :1.5))",
+                "active": true
+              },
+              {
+                "text": "eye trail",
+                "active": true
+              },
+              {
+                "text": "flaming eyes",
+                "active": true
+              },
+              {
+                "text": "lightning eyes",
+                "active": true
+              }
+            ],
+            "strength": null,
+            "highlighted": false
+          }
+        ]
+      },
+      "orinalMessage": "Gl0ss_style",
+      "trigger_words": [
+        "113",
+        2
+      ]
+    },
+    "class_type": "TriggerWord Toggle (LoraManager)",
+    "_meta": {
+      "title": "TriggerWords"
+    }
+  },
+  "113": {
+    "inputs": {
+      "__lm_autocomplete_meta_text": {
+        "version": 1,
+        "textWidgetName": "text"
+      },
+      "text": "<lora:Gl0ss_style:0.80>",
+      "loras": {
+        "__value__": [
+          {
+            "name": "Gl0ss_style",
+            "strength": "0.80",
+            "active": true,
+            "expanded": false,
+            "clipStrength": "0.80",
+            "locked": false
+          }
+        ]
+      },
+      "model": [
+        "1",
+        0
+      ],
+      "clip": [
+        "114",
+        0
+      ]
+    },
+    "class_type": "Lora Loader (LoraManager)",
+    "_meta": {
+      "title": "Lora Loader (LoraManager)"
+    }
+  },
+  "114": {
+    "inputs": {
+      "stop_at_clip_layer": -2,
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "class_type": "CLIPSetLastLayer",
+    "_meta": {
+      "title": "CLIP Set Last Layer"
+    }
+  },
+  "117": {
+    "inputs": {
+      "text": "table, only_table, rectangular_table, black_table, straight-on, full_shot, no_humans, simple_background,"
+    },
+    "class_type": "Text Multiline",
+    "_meta": {
+      "title": "Positive"
+    }
+  },
+  "118": {
+    "inputs": {
+      "text": "bad quality, worst quality, lowres, jpeg_artifacts, multiple_views, signature, watermark, censored, sketch,\n1girl, 1boy, people, character, growing, wooden_table, orb"
+    },
+    "class_type": "Text Multiline",
+    "_meta": {
+      "title": "Negative"
+    }
+  },
+  "116:105:56": {
+    "inputs": {
+      "clip": [
+        "113",
+        1
+      ],
+      "text": [
+        "118",
+        0
+      ]
+    },
+    "class_type": "Text to Conditioning",
+    "_meta": {
+      "title": "Text to Conditioning"
+    }
+  },
+  "116:105:100": {
+    "inputs": {
+      "delimiter": ",",
+      "string1": [
+        "112",
+        0
+      ],
+      "string2": [
+        "117",
+        0
+      ]
+    },
+    "class_type": "JoinStrings",
+    "_meta": {
+      "title": "Join Strings"
+    }
+  },
+  "116:105:55": {
+    "inputs": {
+      "clip": [
+        "113",
+        1
+      ],
+      "text": [
+        "116:105:100",
+        0
+      ]
+    },
+    "class_type": "Text to Conditioning",
+    "_meta": {
+      "title": "Text to Conditioning"
+    }
+  },
+  "116:99:22": {
+    "inputs": {
+      "samples": [
+        "116:99:115",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "116:99:115": {
+    "inputs": {
+      "seed": 807353004394578,
+      "steps": 25,
+      "cfg": 5,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": [
+        "113",
+        0
+      ],
+      "positive": [
+        "116:105:55",
+        0
+      ],
+      "negative": [
+        "116:105:56",
+        0
+      ],
+      "latent_image": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "111:94": {
+    "inputs": {
+      "model": "wd-eva02-large-tagger-v3",
+      "threshold": 0.3500000000000001,
+      "character_threshold": 0.85,
+      "replace_underscore": false,
+      "trailing_comma": false,
+      "exclude_tags": "",
+      "image": [
+        "116:99:22",
+        0
+      ]
+    },
+    "class_type": "WD14Tagger|pysssss",
+    "_meta": {
+      "title": "Tagger"
+    }
+  },
+  "111:96": {
+    "inputs": {
+      "delimiter": ",",
+      "string1": [
+        "111:94",
+        0
+      ],
+      "string2": [
+        "111:95",
+        0
+      ]
+    },
+    "class_type": "JoinStrings",
+    "_meta": {
+      "title": "Join Strings"
+    }
+  },
+  "111:97": {
+    "inputs": {
+      "folder_name": "Raw",
+      "eagle_host": "http://host.docker.internal:41595",
+      "eagle_token": "",
+      "embed_workflow": false,
+      "images": [
+        "116:99:22",
+        0
+      ],
+      "tags": [
+        "111:96",
+        0
+      ]
+    },
+    "class_type": "EagleFeederPng",
+    "_meta": {
+      "title": "EagleFeeder (PNG)"
+    }
+  },
+  "111:95": {
+    "inputs": {
+      "threshold_detect": 0.15,
+      "detect_female_face": false,
+      "detect_male_face": false,
+      "detect_armpits": false,
+      "detect_female_breast": true,
+      "detect_male_breast": false,
+      "detect_belly": false,
+      "detect_female_genitalia": true,
+      "detect_male_genitalia": true,
+      "detect_buttocks": false,
+      "detect_anus": true,
+      "detect_feet": false,
+      "images": [
+        "116:99:22",
+        0
+      ]
+    },
+    "class_type": "RatingCheckerNudeNet",
+    "_meta": {
+      "title": "Rating Checker (NudeNet)"
+    }
+  }
+}

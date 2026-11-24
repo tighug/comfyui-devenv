@@ -1,0 +1,612 @@
+{
+  "6": {
+    "inputs": {
+      "model_name": "sam_vit_b_01ec64.pth",
+      "device_mode": "CPU"
+    },
+    "class_type": "SAMLoader",
+    "_meta": {
+      "title": "SAMLoader (Impact)"
+    }
+  },
+  "7": {
+    "inputs": {
+      "image": "20250707_052048.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "9": {
+    "inputs": {
+      "ckpt_name": "plantMilkModelSuite_walnut.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "18": {
+    "inputs": {
+      "alpha_mode": true,
+      "min_alpha": 0.20000000000000004,
+      "segs": [
+        "99:105",
+        0
+      ]
+    },
+    "class_type": "SEGSPreview",
+    "_meta": {
+      "title": "SEGSPreview"
+    }
+  },
+  "26": {
+    "inputs": {
+      "rgthree_comparer": {
+        "images": [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_qbcvy_00001_.png&type=temp&subfolder=&rand=0.9494393555306772"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_qbcvy_00002_.png&type=temp&subfolder=&rand=0.8931505054481723"
+          }
+        ]
+      },
+      "image_a": [
+        "99:98",
+        0
+      ],
+      "image_b": [
+        "7",
+        0
+      ]
+    },
+    "class_type": "Image Comparer (rgthree)",
+    "_meta": {
+      "title": "Image Comparer (rgthree)"
+    }
+  },
+  "28": {
+    "inputs": {
+      "text": "masterpiece, best quality, good quality,\n1girl, bangs, camellia, daisy, flag_background, flower, from_side, cat ears, profile, red_background, red_border, red_eyes, red_flower, red_rose, red_theme, short_hair, simple_background, solo, flowing hair, glowing red electric eye, (fierce), white_flower, white_hair, style of Bourgeois, angular, an album cover, purism"
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Positive Prompt"
+    }
+  },
+  "29": {
+    "inputs": {
+      "text": "bad quality, worst quality, lowres, jpeg_artifacts, bad_anatomy, bad_hands, multiple_views, signature, watermark, censored, sketch, ugly, fat, muscular, abs, blurry eyes, wrinkled_skin,  "
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Negative Prompt"
+    }
+  },
+  "34": {
+    "inputs": {
+      "value": 28
+    },
+    "class_type": "INTConstant",
+    "_meta": {
+      "title": "Steps"
+    }
+  },
+  "35": {
+    "inputs": {
+      "anything": [
+        "34",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "36": {
+    "inputs": {
+      "value": 3.000000000000001
+    },
+    "class_type": "FloatConstant",
+    "_meta": {
+      "title": "Cfg"
+    }
+  },
+  "37": {
+    "inputs": {
+      "anything": [
+        "36",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "38": {
+    "inputs": {
+      "alpha_mode": true,
+      "min_alpha": 0.20000000000000004,
+      "segs": [
+        "101:112",
+        0
+      ]
+    },
+    "class_type": "SEGSPreview",
+    "_meta": {
+      "title": "SEGSPreview"
+    }
+  },
+  "44": {
+    "inputs": {
+      "rgthree_comparer": {
+        "images": [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_tqhrt_00001_.png&type=temp&subfolder=&rand=0.19438453468038674"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_tqhrt_00002_.png&type=temp&subfolder=&rand=0.8230752677444869"
+          }
+        ]
+      },
+      "image_a": [
+        "101:113",
+        0
+      ],
+      "image_b": [
+        "7",
+        0
+      ]
+    },
+    "class_type": "Image Comparer (rgthree)",
+    "_meta": {
+      "title": "Image Comparer (rgthree)"
+    }
+  },
+  "57": {
+    "inputs": {
+      "alpha_mode": true,
+      "min_alpha": 0.20000000000000004,
+      "segs": [
+        "100:108",
+        0
+      ]
+    },
+    "class_type": "SEGSPreview",
+    "_meta": {
+      "title": "SEGSPreview"
+    }
+  },
+  "59": {
+    "inputs": {
+      "rgthree_comparer": {
+        "images": [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_tuikp_00001_.png&type=temp&subfolder=&rand=0.7407041403937661"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_tuikp_00002_.png&type=temp&subfolder=&rand=0.14837449615887888"
+          }
+        ]
+      },
+      "image_a": [
+        "100:109",
+        0
+      ],
+      "image_b": [
+        "7",
+        0
+      ]
+    },
+    "class_type": "Image Comparer (rgthree)",
+    "_meta": {
+      "title": "Image Comparer (rgthree)"
+    }
+  },
+  "79": {
+    "inputs": {
+      "rgthree_comparer": {
+        "images": [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_vogya_00001_.png&type=temp&subfolder=&rand=0.9685270881877093"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_vogya_00002_.png&type=temp&subfolder=&rand=0.15474856032576578"
+          }
+        ]
+      },
+      "image_a": [
+        "101:113",
+        0
+      ],
+      "image_b": [
+        "7",
+        0
+      ]
+    },
+    "class_type": "Image Comparer (rgthree)",
+    "_meta": {
+      "title": "Image Comparer (rgthree)"
+    }
+  },
+  "103": {
+    "inputs": {
+      "anything": [
+        "9",
+        0
+      ],
+      "anything11": [
+        "9",
+        1
+      ],
+      "anything12": [
+        "9",
+        2
+      ],
+      "anything13": [
+        "6",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "99:4": {
+    "inputs": {
+      "model_name": "segm/nipples_yolov8s-seg.pt"
+    },
+    "class_type": "UltralyticsDetectorProvider",
+    "_meta": {
+      "title": "UltralyticsDetectorProvider"
+    }
+  },
+  "99:25": {
+    "inputs": {
+      "lora_name": "IL/detailer/IL20_NP31i.safetensors",
+      "strength_model": 0.6000000000000001
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "99:105": {
+    "inputs": {
+      "bbox_threshold": 0.5,
+      "bbox_dilation": 2,
+      "crop_factor": 2,
+      "drop_size": 10,
+      "sub_threshold": 0.5,
+      "sub_dilation": 2,
+      "sub_bbox_expansion": 0,
+      "sam_mask_hint_threshold": 0.7000000000000002,
+      "post_dilation": 0,
+      "bbox_detector": [
+        "99:4",
+        0
+      ],
+      "image": [
+        "7",
+        0
+      ],
+      "segm_detector_opt": [
+        "99:4",
+        1
+      ]
+    },
+    "class_type": "ImpactSimpleDetectorSEGS",
+    "_meta": {
+      "title": "Simple Detector (SEGS)"
+    }
+  },
+  "99:98": {
+    "inputs": {
+      "guide_size": 512,
+      "guide_size_for": true,
+      "max_size": 1024,
+      "seed": 461957624294601,
+      "steps": 1,
+      "cfg": 0,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "normal",
+      "denoise": 0.30000000000000004,
+      "feather": 5,
+      "noise_mask": true,
+      "force_inpaint": true,
+      "wildcard": "nipples",
+      "cycle": 1,
+      "inpaint_model": false,
+      "noise_mask_feather": 20,
+      "tiled_encode": false,
+      "tiled_decode": false,
+      "image": [
+        "7",
+        0
+      ],
+      "segs": [
+        "99:105",
+        0
+      ],
+      "model": [
+        "99:25",
+        0
+      ],
+      "positive": [
+        "28",
+        0
+      ],
+      "negative": [
+        "29",
+        0
+      ]
+    },
+    "class_type": "DetailerForEach",
+    "_meta": {
+      "title": "Detailer (SEGS)"
+    }
+  },
+  "100:106": {
+    "inputs": {
+      "model_name": "segm/womensUnderwear_pantiesSegV3b.pt"
+    },
+    "class_type": "UltralyticsDetectorProvider",
+    "_meta": {
+      "title": "UltralyticsDetectorProvider"
+    }
+  },
+  "100:107": {
+    "inputs": {
+      "lora_name": "IL/detailer/realpan_il_v2a.safetensors",
+      "strength_model": 0.7
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "100:108": {
+    "inputs": {
+      "bbox_threshold": 0.5,
+      "bbox_dilation": 2,
+      "crop_factor": 2,
+      "drop_size": 10,
+      "sub_threshold": 0.5,
+      "sub_dilation": 2,
+      "sub_bbox_expansion": 0,
+      "sam_mask_hint_threshold": 0.7000000000000002,
+      "post_dilation": 0,
+      "bbox_detector": [
+        "100:106",
+        0
+      ],
+      "image": [
+        "99:98",
+        0
+      ],
+      "segm_detector_opt": [
+        "100:106",
+        1
+      ]
+    },
+    "class_type": "ImpactSimpleDetectorSEGS",
+    "_meta": {
+      "title": "Simple Detector (SEGS)"
+    }
+  },
+  "100:109": {
+    "inputs": {
+      "guide_size": 512,
+      "guide_size_for": true,
+      "max_size": 1024,
+      "seed": 69403384585522,
+      "steps": 1,
+      "cfg": 0,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "normal",
+      "denoise": 0.2,
+      "feather": 5,
+      "noise_mask": true,
+      "force_inpaint": true,
+      "wildcard": "panties",
+      "cycle": 1,
+      "inpaint_model": false,
+      "noise_mask_feather": 20,
+      "tiled_encode": false,
+      "tiled_decode": false,
+      "image": [
+        "99:98",
+        0
+      ],
+      "segs": [
+        "100:108",
+        0
+      ],
+      "model": [
+        "100:107",
+        0
+      ]
+    },
+    "class_type": "DetailerForEach",
+    "_meta": {
+      "title": "Detailer (SEGS)"
+    }
+  },
+  "101:110": {
+    "inputs": {
+      "model_name": "bbox/Eyes.pt"
+    },
+    "class_type": "UltralyticsDetectorProvider",
+    "_meta": {
+      "title": "UltralyticsDetectorProvider"
+    }
+  },
+  "101:111": {
+    "inputs": {
+      "lora_name": "IL/detailer/eye_focus_illus.safetensors",
+      "strength_model": 0.7
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "101:112": {
+    "inputs": {
+      "bbox_threshold": 0.5,
+      "bbox_dilation": 2,
+      "crop_factor": 2,
+      "drop_size": 10,
+      "sub_threshold": 0.5,
+      "sub_dilation": 2,
+      "sub_bbox_expansion": 0,
+      "sam_mask_hint_threshold": 0.7000000000000002,
+      "post_dilation": 0,
+      "bbox_detector": [
+        "101:110",
+        0
+      ],
+      "image": [
+        "100:109",
+        0
+      ],
+      "segm_detector_opt": [
+        "101:110",
+        1
+      ]
+    },
+    "class_type": "ImpactSimpleDetectorSEGS",
+    "_meta": {
+      "title": "Simple Detector (SEGS)"
+    }
+  },
+  "101:113": {
+    "inputs": {
+      "guide_size": 512,
+      "guide_size_for": true,
+      "max_size": 1024,
+      "seed": 484001614008571,
+      "steps": 1,
+      "cfg": 0,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "normal",
+      "denoise": 0.3,
+      "feather": 5,
+      "noise_mask": true,
+      "force_inpaint": true,
+      "wildcard": "eye_focus",
+      "cycle": 1,
+      "inpaint_model": false,
+      "noise_mask_feather": 20,
+      "tiled_encode": false,
+      "tiled_decode": false,
+      "image": [
+        "100:109",
+        0
+      ],
+      "segs": [
+        "101:112",
+        0
+      ],
+      "model": [
+        "101:111",
+        0
+      ]
+    },
+    "class_type": "DetailerForEach",
+    "_meta": {
+      "title": "Detailer (SEGS)"
+    }
+  },
+  "95:94": {
+    "inputs": {
+      "model": "wd-eva02-large-tagger-v3",
+      "threshold": 0.3500000000000001,
+      "character_threshold": 0.85,
+      "replace_underscore": false,
+      "trailing_comma": false,
+      "exclude_tags": "",
+      "image": [
+        "101:113",
+        0
+      ]
+    },
+    "class_type": "WD14Tagger|pysssss",
+    "_meta": {
+      "title": "Tagger"
+    }
+  },
+  "95:104": {
+    "inputs": {
+      "threshold_detect": 0.15,
+      "detect_female_face": false,
+      "detect_male_face": false,
+      "detect_armpits": false,
+      "detect_female_breast": true,
+      "detect_male_breast": false,
+      "detect_belly": false,
+      "detect_female_genitalia": true,
+      "detect_male_genitalia": true,
+      "detect_buttocks": false,
+      "detect_anus": true,
+      "detect_feet": false,
+      "images": [
+        "101:113",
+        0
+      ]
+    },
+    "class_type": "RatingCheckerNudeNet",
+    "_meta": {
+      "title": "Rating Checker (NudeNet)"
+    }
+  },
+  "95:96": {
+    "inputs": {
+      "delimiter": ",",
+      "string1": [
+        "95:94",
+        0
+      ],
+      "string2": [
+        "95:104",
+        0
+      ]
+    },
+    "class_type": "JoinStrings",
+    "_meta": {
+      "title": "Join Strings"
+    }
+  },
+  "95:97": {
+    "inputs": {
+      "folder_name": "Detailed",
+      "eagle_host": "http://host.docker.internal:41595",
+      "eagle_token": "",
+      "embed_workflow": true,
+      "images": [
+        "101:113",
+        0
+      ],
+      "tags": [
+        "95:96",
+        0
+      ]
+    },
+    "class_type": "EagleFeederPng",
+    "_meta": {
+      "title": "EagleFeeder (PNG)"
+    }
+  }
+}

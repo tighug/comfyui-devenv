@@ -1,0 +1,242 @@
+{
+  "1": {
+    "inputs": {
+      "config": "SDXL, Conv Injection",
+      "weight": 1,
+      "model": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "LayeredDiffusionApply",
+    "_meta": {
+      "title": "Layer Diffuse Apply"
+    }
+  },
+  "3": {
+    "inputs": {
+      "ckpt_name": "waiIllustriousSDXL_v160.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "111": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "114": {
+    "inputs": {
+      "images": [
+        "124",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "120": {
+    "inputs": {
+      "text": "bad quality, worst quality, lowres, jpeg_artifacts, bad_anatomy, bad_hands, multiple_views, signature, watermark, censored, sketch, ugly, fat, muscular, abs, blurry eyes, wrinkled_skin,  ",
+      "clip": [
+        "3",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "121": {
+    "inputs": {
+      "text": "metalic_chair, black_chair, straight-on, no_humans, static_life, simple_background, ",
+      "clip": [
+        "3",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "122": {
+    "inputs": {
+      "samples": [
+        "123",
+        0
+      ],
+      "vae": [
+        "3",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "123": {
+    "inputs": {
+      "seed": 237825143514673,
+      "steps": 25,
+      "cfg": 5,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "121",
+        0
+      ],
+      "negative": [
+        "120",
+        0
+      ],
+      "latent_image": [
+        "127",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "124": {
+    "inputs": {
+      "sd_version": "SDXL",
+      "sub_batch_size": 8,
+      "samples": [
+        "123",
+        0
+      ],
+      "images": [
+        "122",
+        0
+      ]
+    },
+    "class_type": "LayeredDiffusionDecode",
+    "_meta": {
+      "title": "Layer Diffuse Decode"
+    }
+  },
+  "126": {
+    "inputs": {
+      "image": "000_20260428_050104.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "127": {
+    "inputs": {
+      "pixels": [
+        "126",
+        0
+      ],
+      "vae": [
+        "3",
+        2
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "113:94": {
+    "inputs": {
+      "model": "wd-eva02-large-tagger-v3",
+      "threshold": 0.3500000000000001,
+      "character_threshold": 0.85,
+      "replace_underscore": false,
+      "trailing_comma": false,
+      "exclude_tags": "",
+      "image": [
+        "124",
+        0
+      ]
+    },
+    "class_type": "WD14Tagger|pysssss",
+    "_meta": {
+      "title": "Tagger"
+    }
+  },
+  "113:96": {
+    "inputs": {
+      "delimiter": ",",
+      "string1": [
+        "113:94",
+        0
+      ],
+      "string2": [
+        "113:95",
+        0
+      ]
+    },
+    "class_type": "JoinStrings",
+    "_meta": {
+      "title": "Join Strings"
+    }
+  },
+  "113:97": {
+    "inputs": {
+      "folder_name": "Raw",
+      "eagle_host": "http://host.docker.internal:41595",
+      "eagle_token": "",
+      "embed_workflow": true,
+      "images": [
+        "124",
+        0
+      ],
+      "tags": [
+        "113:96",
+        0
+      ]
+    },
+    "class_type": "EagleFeederPng",
+    "_meta": {
+      "title": "EagleFeeder (PNG)"
+    }
+  },
+  "113:95": {
+    "inputs": {
+      "threshold_detect": 0.15,
+      "detect_female_face": false,
+      "detect_male_face": false,
+      "detect_armpits": false,
+      "detect_female_breast": true,
+      "detect_male_breast": false,
+      "detect_belly": false,
+      "detect_female_genitalia": true,
+      "detect_male_genitalia": true,
+      "detect_buttocks": false,
+      "detect_anus": true,
+      "detect_feet": false,
+      "images": [
+        "124",
+        0
+      ]
+    },
+    "class_type": "RatingCheckerNudeNet",
+    "_meta": {
+      "title": "Rating Checker (NudeNet)"
+    }
+  }
+}

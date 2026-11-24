@@ -1,0 +1,611 @@
+{
+  "2": {
+    "inputs": {
+      "images": [
+        "48:35",
+        1
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "45": {
+    "inputs": {
+      "text": "bad quality, worst quality, lowres, jpeg_artifacts, bad_anatomy, bad_hands, multiple_views, signature, watermark, censored, sketch, ugly, fat, muscular, abs, blurry eyes, wrinkled_skin,  "
+    },
+    "class_type": "Text Multiline",
+    "_meta": {
+      "title": "Negative"
+    }
+  },
+  "46": {
+    "inputs": {
+      "dimensions": "7:4(1.75) - 1344x768",
+      "invert": false,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImageCustomPresets",
+    "_meta": {
+      "title": "Image Size"
+    }
+  },
+  "53": {
+    "inputs": {
+      "value_4": [
+        "56:106",
+        0
+      ],
+      "value_9": [
+        "64:121",
+        0
+      ],
+      "value_10": [
+        "65:124",
+        0
+      ]
+    },
+    "class_type": "GODMT_CreateBatch",
+    "_meta": {
+      "title": "Create Batch"
+    }
+  },
+  "54": {
+    "inputs": {
+      "text": "aesthetic, masterpiece, texture_masterpiece"
+    },
+    "class_type": "Text Multiline",
+    "_meta": {
+      "title": "Positive"
+    }
+  },
+  "17:15": {
+    "inputs": {
+      "image": "20250626_031718.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "17:16": {
+    "inputs": {
+      "model": "wd-eva02-large-tagger-v3",
+      "threshold": 0.35,
+      "character_threshold": 0.85,
+      "replace_underscore": false,
+      "trailing_comma": false,
+      "exclude_tags": "",
+      "image": [
+        "17:15",
+        0
+      ]
+    },
+    "class_type": "WD14Tagger|pysssss",
+    "_meta": {
+      "title": "Tagger"
+    }
+  },
+  "65:124": {
+    "inputs": {
+      "model": [
+        "65:125",
+        0
+      ],
+      "clip": [
+        "65:125",
+        1
+      ],
+      "vae": [
+        "65:125",
+        2
+      ],
+      "steps": [
+        "65:126",
+        0
+      ],
+      "cfg": [
+        "65:126",
+        2
+      ],
+      "ckpt_name": "SDXL/Flanime_IL_V27.safetensors",
+      "sampler": [
+        "65:126",
+        3
+      ],
+      "scheduler": [
+        "65:126",
+        4
+      ]
+    },
+    "class_type": "Context Big (rgthree)",
+    "_meta": {
+      "title": "Context Big (rgthree)"
+    }
+  },
+  "65:125": {
+    "inputs": {
+      "ckpt_name": "SDXL/Flanime_IL_V27.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "65:126": {
+    "inputs": {
+      "steps_total": 30,
+      "refiner_step": 24,
+      "cfg": 5,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "normal"
+    },
+    "class_type": "KSampler Config (rgthree)",
+    "_meta": {
+      "title": "WAI"
+    }
+  },
+  "64:121": {
+    "inputs": {
+      "model": [
+        "64:122",
+        0
+      ],
+      "clip": [
+        "64:122",
+        1
+      ],
+      "vae": [
+        "64:122",
+        2
+      ],
+      "steps": [
+        "64:123",
+        0
+      ],
+      "cfg": [
+        "64:123",
+        2
+      ],
+      "ckpt_name": "plantMilkModelSuite_walnut.safetensors",
+      "sampler": [
+        "64:123",
+        3
+      ],
+      "scheduler": [
+        "64:123",
+        4
+      ]
+    },
+    "class_type": "Context Big (rgthree)",
+    "_meta": {
+      "title": "Context Big (rgthree)"
+    }
+  },
+  "64:122": {
+    "inputs": {
+      "ckpt_name": "plantMilkModelSuite_walnut.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "64:123": {
+    "inputs": {
+      "steps_total": 30,
+      "refiner_step": 24,
+      "cfg": 5,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "normal"
+    },
+    "class_type": "KSampler Config (rgthree)",
+    "_meta": {
+      "title": "WAI"
+    }
+  },
+  "56:106": {
+    "inputs": {
+      "model": [
+        "56:107",
+        0
+      ],
+      "clip": [
+        "56:107",
+        1
+      ],
+      "vae": [
+        "56:107",
+        2
+      ],
+      "steps": [
+        "56:108",
+        0
+      ],
+      "cfg": [
+        "56:108",
+        2
+      ],
+      "ckpt_name": "SDXL/NtrMIX_IL_XIII.safetensors",
+      "sampler": [
+        "56:108",
+        3
+      ],
+      "scheduler": [
+        "56:108",
+        4
+      ]
+    },
+    "class_type": "Context Big (rgthree)",
+    "_meta": {
+      "title": "Context Big (rgthree)"
+    }
+  },
+  "56:107": {
+    "inputs": {
+      "ckpt_name": "SDXL/NtrMIX_IL_XIII.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "56:108": {
+    "inputs": {
+      "steps_total": 30,
+      "refiner_step": 24,
+      "cfg": 5,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras"
+    },
+    "class_type": "KSampler Config (rgthree)",
+    "_meta": {
+      "title": "WAI"
+    }
+  },
+  "48:35": {
+    "inputs": {
+      "condition": "True",
+      "LOOP": [
+        "48:31",
+        0
+      ],
+      "data": [
+        "48:34",
+        0
+      ]
+    },
+    "class_type": "LoopClose",
+    "_meta": {
+      "title": "⏹️ Loop Close"
+    }
+  },
+  "48:34": {
+    "inputs": {
+      "method_for_images": "lanczos",
+      "input1": [
+        "48:31",
+        1
+      ],
+      "input2": [
+        "48:36",
+        0
+      ]
+    },
+    "class_type": "FallbackAnyBatch",
+    "_meta": {
+      "title": "Fallback Any Batch"
+    }
+  },
+  "48:36": {
+    "inputs": {
+      "text_x": 10,
+      "text_y": 2,
+      "height": 48,
+      "font_size": 32,
+      "font_color": "white",
+      "label_color": "black",
+      "font": "FreeMonoBoldOblique.otf",
+      "text": [
+        "48:42",
+        0
+      ],
+      "direction": "up",
+      "image": [
+        "48:14:22",
+        0
+      ]
+    },
+    "class_type": "AddLabel",
+    "_meta": {
+      "title": "Add Label"
+    }
+  },
+  "48:14:22": {
+    "inputs": {
+      "samples": [
+        "48:14:3",
+        0
+      ],
+      "vae": [
+        "48:27",
+        3
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "48:14:3": {
+    "inputs": {
+      "seed": 140510014363770,
+      "steps": [
+        "48:27",
+        9
+      ],
+      "cfg": [
+        "48:27",
+        11
+      ],
+      "sampler_name": [
+        "48:27",
+        13
+      ],
+      "scheduler": [
+        "48:27",
+        14
+      ],
+      "denoise": 1,
+      "model": [
+        "48:27",
+        1
+      ],
+      "positive": [
+        "48:43",
+        0
+      ],
+      "negative": [
+        "48:44",
+        0
+      ],
+      "latent_image": [
+        "48:27",
+        6
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "48:43": {
+    "inputs": {
+      "clip": [
+        "48:27",
+        2
+      ],
+      "text": [
+        "48:105",
+        0
+      ]
+    },
+    "class_type": "Text to Conditioning",
+    "_meta": {
+      "title": "Positive"
+    }
+  },
+  "48:42": {
+    "inputs": {
+      "prefix": "",
+      "suffix": "",
+      "input": [
+        "48:27",
+        12
+      ]
+    },
+    "class_type": "SomethingToString",
+    "_meta": {
+      "title": "Something To String"
+    }
+  },
+  "48:32": {
+    "inputs": {
+      "text": "%aux%['index']",
+      "output_type": "FORMULA",
+      "aux": [
+        "48:31",
+        0
+      ]
+    },
+    "class_type": "DataMonitor",
+    "_meta": {
+      "title": "Get Index"
+    }
+  },
+  "48:31": {
+    "inputs": {
+      "start": 0,
+      "step": 1,
+      "end": [
+        "48:41",
+        0
+      ],
+      "condition": "True"
+    },
+    "class_type": "LoopOpen",
+    "_meta": {
+      "title": "🔃 Loop Open"
+    }
+  },
+  "48:41": {
+    "inputs": {
+      "value": "a-1",
+      "a": [
+        "48:40",
+        0
+      ]
+    },
+    "class_type": "SimpleMath+",
+    "_meta": {
+      "title": "🔧 Simple Math"
+    }
+  },
+  "48:40": {
+    "inputs": {
+      "batch": [
+        "53",
+        0
+      ]
+    },
+    "class_type": "BatchCount+",
+    "_meta": {
+      "title": "🔧 Batch Count"
+    }
+  },
+  "48:27": {
+    "inputs": {
+      "base_ctx": [
+        "48:33",
+        0
+      ],
+      "latent": [
+        "46",
+        0
+      ]
+    },
+    "class_type": "Context Big (rgthree)",
+    "_meta": {
+      "title": "Context Big (rgthree)"
+    }
+  },
+  "48:33": {
+    "inputs": {
+      "index": [
+        "48:32",
+        0
+      ],
+      "LIST": [
+        "53",
+        0
+      ]
+    },
+    "class_type": "GODMT_BatchGetByIndex",
+    "_meta": {
+      "title": "Batch: Get By Index"
+    }
+  },
+  "48:44": {
+    "inputs": {
+      "clip": [
+        "48:27",
+        2
+      ],
+      "text": [
+        "45",
+        0
+      ]
+    },
+    "class_type": "Text to Conditioning",
+    "_meta": {
+      "title": "Negative"
+    }
+  },
+  "48:105": {
+    "inputs": {
+      "delimiter": ",",
+      "string1": [
+        "17:16",
+        0
+      ],
+      "string2": [
+        "54",
+        0
+      ]
+    },
+    "class_type": "JoinStrings",
+    "_meta": {
+      "title": "Join Strings"
+    }
+  },
+  "1:94": {
+    "inputs": {
+      "model": "wd-eva02-large-tagger-v3",
+      "threshold": 0.3500000000000001,
+      "character_threshold": 0.85,
+      "replace_underscore": false,
+      "trailing_comma": false,
+      "exclude_tags": "",
+      "image": [
+        "48:35",
+        1
+      ]
+    },
+    "class_type": "WD14Tagger|pysssss",
+    "_meta": {
+      "title": "Tagger"
+    }
+  },
+  "1:95": {
+    "inputs": {
+      "threshold_detect": 0.15,
+      "detect_female_face": false,
+      "detect_male_face": false,
+      "detect_armpits": false,
+      "detect_female_breast": true,
+      "detect_male_breast": false,
+      "detect_belly": false,
+      "detect_female_genitalia": true,
+      "detect_male_genitalia": true,
+      "detect_buttocks": false,
+      "detect_anus": true,
+      "detect_feet": false,
+      "images": [
+        "48:35",
+        1
+      ]
+    },
+    "class_type": "RatingCheckerNudeNet",
+    "_meta": {
+      "title": "Rating Checker (NudeNet)"
+    }
+  },
+  "1:96": {
+    "inputs": {
+      "delimiter": ",",
+      "string1": [
+        "1:94",
+        0
+      ],
+      "string2": [
+        "1:95",
+        0
+      ]
+    },
+    "class_type": "JoinStrings",
+    "_meta": {
+      "title": "Join Strings"
+    }
+  },
+  "1:97": {
+    "inputs": {
+      "folder_name": "Tmp",
+      "eagle_host": "http://host.docker.internal:41595",
+      "eagle_token": "",
+      "embed_workflow": true,
+      "images": [
+        "48:35",
+        1
+      ],
+      "tags": [
+        "1:96",
+        0
+      ]
+    },
+    "class_type": "EagleFeederPng",
+    "_meta": {
+      "title": "EagleFeeder (PNG)"
+    }
+  }
+}

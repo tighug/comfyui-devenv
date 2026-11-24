@@ -1,0 +1,186 @@
+{
+  "1": {
+    "inputs": {
+      "image": "T2I.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "2": {
+    "inputs": {
+      "model_name": "4x_NMKD-Siax_200k.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "Load Upscale Model"
+    }
+  },
+  "3": {
+    "inputs": {
+      "UNKNOWN": false,
+      "image": [
+        "1",
+        0
+      ],
+      "model": [
+        "5",
+        0
+      ],
+      "positive": [
+        "11",
+        0
+      ],
+      "negative": [
+        "12",
+        0
+      ],
+      "vae": [
+        "5",
+        2
+      ],
+      "upscale_model": [
+        "2",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "5": {
+    "inputs": {
+      "ckpt_name": "plantMilkModelSuite_walnut.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "10": {
+    "inputs": {
+      "rgthree_comparer": {
+        "images": [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_bhnnr_00003_.png&type=temp&subfolder=&rand=0.43699221018403733"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_bhnnr_00004_.png&type=temp&subfolder=&rand=0.46115040860361944"
+          }
+        ]
+      },
+      "image_a": [
+        "3",
+        0
+      ],
+      "image_b": [
+        "1",
+        0
+      ]
+    },
+    "class_type": "Image Comparer (rgthree)",
+    "_meta": {
+      "title": "Image Comparer (rgthree)"
+    }
+  },
+  "11": {
+    "inputs": {
+      "text": "masterpiece, best quality, good quality,\n1girl, bangs, camellia, daisy, flag_background, flower, from_side, cat ears, profile, red_background, red_border, red_eyes, red_flower, red_rose, red_theme, short_hair, simple_background, solo, flowing hair, glowing red electric eye, (fierce), white_flower, white_hair, style of Bourgeois, angular, an album cover, purism"
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Positive Prompt"
+    }
+  },
+  "12": {
+    "inputs": {
+      "text": "bad quality, worst quality, lowres, jpeg_artifacts, bad_anatomy, bad_hands, multiple_views, signature, watermark, censored, sketch, ugly, fat, muscular, abs, blurry eyes, wrinkled_skin,  "
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Negative Prompt"
+    }
+  },
+  "40:94": {
+    "inputs": {
+      "model": "wd-eva02-large-tagger-v3",
+      "threshold": 0.3500000000000001,
+      "character_threshold": 0.85,
+      "replace_underscore": false,
+      "trailing_comma": false,
+      "exclude_tags": "",
+      "image": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "WD14Tagger|pysssss",
+    "_meta": {
+      "title": "Tagger"
+    }
+  },
+  "40:95": {
+    "inputs": {
+      "threshold_detect": 0.15,
+      "detect_female_face": false,
+      "detect_male_face": false,
+      "detect_armpits": false,
+      "detect_female_breast": true,
+      "detect_male_breast": false,
+      "detect_belly": false,
+      "detect_female_genitalia": true,
+      "detect_male_genitalia": true,
+      "detect_buttocks": false,
+      "detect_anus": true,
+      "detect_feet": false,
+      "images": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "RatingCheckerNudeNet",
+    "_meta": {
+      "title": "Rating Checker (NudeNet)"
+    }
+  },
+  "40:96": {
+    "inputs": {
+      "delimiter": ",",
+      "string1": [
+        "40:94",
+        0
+      ],
+      "string2": [
+        "40:95",
+        0
+      ]
+    },
+    "class_type": "JoinStrings",
+    "_meta": {
+      "title": "Join Strings"
+    }
+  },
+  "40:97": {
+    "inputs": {
+      "folder_name": "Upscaled",
+      "eagle_host": "http://host.docker.internal:41595",
+      "eagle_token": "",
+      "embed_workflow": true,
+      "images": [
+        "3",
+        0
+      ],
+      "tags": [
+        "40:96",
+        0
+      ]
+    },
+    "class_type": "EagleFeederPng",
+    "_meta": {
+      "title": "EagleFeeder (PNG)"
+    }
+  }
+}

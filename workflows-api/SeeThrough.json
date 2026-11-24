@@ -1,0 +1,127 @@
+{
+  "1": {
+    "inputs": {
+      "model": "layerdifforg/seethroughv0.0.1_marigold",
+      "quant_mode": "none",
+      "cache_tag_embeds": true,
+      "group_offload": true
+    },
+    "class_type": "SeeThrough_LoadDepthModel",
+    "_meta": {
+      "title": "SeeThrough Load Depth Model"
+    }
+  },
+  "2": {
+    "inputs": {
+      "model": "layerdifforg/seethroughv0.0.2_layerdiff3d",
+      "vae_ckpt": "",
+      "unet_ckpt": "",
+      "quant_mode": "none",
+      "cache_tag_embeds": true,
+      "group_offload": true
+    },
+    "class_type": "SeeThrough_LoadLayerDiffModel",
+    "_meta": {
+      "title": "SeeThrough Load LayerDiff Model"
+    }
+  },
+  "3": {
+    "inputs": {
+      "filename_prefix": "seethrough",
+      "Download PSD": "Download PSD",
+      "Download Depth PSD": "Download Depth PSD",
+      "parts": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "SeeThrough_SavePSD",
+    "_meta": {
+      "title": "SeeThrough Save PSD"
+    }
+  },
+  "4": {
+    "inputs": {
+      "images": [
+        "8",
+        1
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "5": {
+    "inputs": {
+      "image": "sample.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "6": {
+    "inputs": {
+      "seed": 1524544350,
+      "resolution": 1280,
+      "num_inference_steps": 30,
+      "image": [
+        "5",
+        0
+      ],
+      "layerdiff_model": [
+        "2",
+        0
+      ]
+    },
+    "class_type": "SeeThrough_GenerateLayers",
+    "_meta": {
+      "title": "SeeThrough Generate Layers"
+    }
+  },
+  "7": {
+    "inputs": {
+      "seed": 1077765694,
+      "resolution_depth": 831,
+      "layers": [
+        "6",
+        0
+      ],
+      "depth_model": [
+        "1",
+        0
+      ]
+    },
+    "class_type": "SeeThrough_GenerateDepth",
+    "_meta": {
+      "title": "SeeThrough Generate Depth"
+    }
+  },
+  "8": {
+    "inputs": {
+      "tblr_split": true,
+      "use_lama": true,
+      "layers_depth": [
+        "7",
+        0
+      ]
+    },
+    "class_type": "SeeThrough_PostProcess",
+    "_meta": {
+      "title": "SeeThrough Post Process"
+    }
+  },
+  "9": {
+    "inputs": {
+      "images": [
+        "6",
+        1
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  }
+}

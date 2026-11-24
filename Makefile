@@ -11,3 +11,9 @@ setup:
 
 start:
 	python3 ./scripts/launch.py
+
+pull-api:
+	python3 ./scripts/pull_api_exports.py
+
+validate:
+	python3 ./scripts/validate_workflows.py

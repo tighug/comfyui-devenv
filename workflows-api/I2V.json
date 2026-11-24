@@ -1,0 +1,492 @@
+{
+  "1": {
+    "inputs": {
+      "UNKNOWN": false
+    },
+    "_meta": {}
+  },
+  "2": {
+    "inputs": {
+      "UNKNOWN": "default",
+      "samples": [
+        "1",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "15": {
+    "inputs": {},
+    "_meta": {
+      "title": "Anything Everywhere"
+    }
+  },
+  "16": {
+    "inputs": {
+      "UNKNOWN": 0
+    },
+    "_meta": {
+      "title": "CFG-Zero"
+    }
+  },
+  "17": {
+    "inputs": {
+      "anything": [
+        "16",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "20": {
+    "inputs": {
+      "UNKNOWN": "sageattn",
+      "block_swap_args": [
+        "22",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "22": {
+    "inputs": {
+      "UNKNOWN": 0
+    },
+    "_meta": {
+      "title": "BlockSwap"
+    }
+  },
+  "25": {
+    "inputs": {
+      "image": "pasted/image (79).png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Start Image"
+    }
+  },
+  "29": {
+    "inputs": {
+      "UNKNOWN": "gpu"
+    },
+    "_meta": {}
+  },
+  "32": {
+    "inputs": {
+      "UNKNOWN": "bf16"
+    },
+    "_meta": {}
+  },
+  "33": {
+    "inputs": {
+      "width": 576,
+      "height": 575,
+      "upscale_method": "lanczos",
+      "keep_proportion": "stretch",
+      "pad_color": "0, 0, 0",
+      "crop_position": "center",
+      "divisible_by": 16,
+      "device": "cpu",
+      "image": [
+        "25",
+        0
+      ]
+    },
+    "class_type": "ImageResizeKJv2",
+    "_meta": {
+      "title": "Resize Start Image"
+    }
+  },
+  "34": {
+    "inputs": {
+      "UNKNOWN": 0.5,
+      "image_1": [
+        "33",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "35": {
+    "inputs": {
+      "UNKNOWN": false,
+      "clip_embeds": [
+        "34",
+        0
+      ],
+      "start_image": [
+        "33",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "36": {
+    "inputs": {
+      "anything": [
+        "32",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "38": {
+    "inputs": {
+      "anything": [
+        "20",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "39": {
+    "inputs": {
+      "anything": [
+        "35",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "40": {
+    "inputs": {
+      "anything": [
+        "29",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "44": {
+    "inputs": {
+      "UNKNOWN": ".*",
+      "anything": [
+        "116",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "Anything Everywhere"
+    }
+  },
+  "45": {
+    "inputs": {
+      "UNKNOWN": ".*",
+      "anything": [
+        "116",
+        2
+      ]
+    },
+    "_meta": {
+      "title": "Anything Everywhere"
+    }
+  },
+  "46": {
+    "inputs": {
+      "UNKNOWN": ".*",
+      "anything": [
+        "71",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Anything Everywhere"
+    }
+  },
+  "54": {
+    "inputs": {
+      "UNKNOWN": true,
+      "prev_lora": [
+        "114",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "55": {
+    "inputs": {
+      "UNKNOWN": "offload_device"
+    },
+    "_meta": {}
+  },
+  "56": {
+    "inputs": {
+      "anything": [
+        "55",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "58": {
+    "inputs": {
+      "UNKNOWN": "fp8_e4m3fn"
+    },
+    "_meta": {}
+  },
+  "59": {
+    "inputs": {
+      "UNKNOWN": ".*",
+      "anything": [
+        "58",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Anything Everywhere"
+    }
+  },
+  "65": {
+    "inputs": {
+      "text": "A woman is straddling a man and having sex with him. She bounces up and down on top of the man. Her breasts are bouncing. The view is pov. Penis goes in and out of vagina. nsfwsks. "
+    },
+    "class_type": "Text Multiline (Code Compatible)",
+    "_meta": {
+      "title": "Positice Prompt"
+    }
+  },
+  "71": {
+    "inputs": {
+      "value": 49
+    },
+    "class_type": "INTConstant",
+    "_meta": {
+      "title": "Number of Frames"
+    }
+  },
+  "72": {
+    "inputs": {
+      "seed": -1
+    },
+    "class_type": "Seed (rgthree)",
+    "_meta": {
+      "title": "Seed"
+    }
+  },
+  "75": {
+    "inputs": {
+      "value": 5
+    },
+    "class_type": "INTConstant",
+    "_meta": {
+      "title": "Steps"
+    }
+  },
+  "76": {
+    "inputs": {
+      "value": 1.0000000000000002
+    },
+    "class_type": "FloatConstant",
+    "_meta": {
+      "title": "Cfg"
+    }
+  },
+  "77": {
+    "inputs": {
+      "UNKNOWN": ".*",
+      "anything": [
+        "75",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Anything Everywhere"
+    }
+  },
+  "80": {
+    "inputs": {
+      "UNKNOWN": ".*",
+      "anything": [
+        "76",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Anything Everywhere"
+    }
+  },
+  "81": {
+    "inputs": {
+      "UNKNOWN": ".*",
+      "anything": [
+        "72",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Anything Everywhere"
+    }
+  },
+  "83": {
+    "inputs": {
+      "text": "Overly vibrant colors, overexposed, static, blurry details, subtitles, style, work, artwork, painting, screen, frame, still, motionless, washed out, dull colors, grayish, worst quality, low quality, jpeg artifacts, compression artifacts, ugly, incomplete, mutilated, extra fingers, too many fingers, poorly drawn hands, bad hands, poorly drawn face, bad face, deformed, mutated, disfigured, malformed limbs, fused fingers, motionless scene, static image, cluttered background, messy background, three legs, too many people in background, crowded background, walking backward, backward movement"
+    },
+    "class_type": "Text Multiline (Code Compatible)",
+    "_meta": {
+      "title": "Nagative Prompt"
+    }
+  },
+  "91": {
+    "inputs": {
+      "UNKNOWN": "Models",
+      "anything": [
+        "54",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Anything Everywhere"
+    }
+  },
+  "94": {
+    "inputs": {
+      "UNKNOWN": "",
+      "anything": [
+        "83",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Anything Everywhere"
+    }
+  },
+  "100": {
+    "inputs": {
+      "folder_name": "RawV",
+      "eagle_host": "http://host.docker.internal:41595",
+      "eagle_token": "",
+      "embed_workflow": true,
+      "fps": 16.000000000000004,
+      "lossless": true,
+      "quality": 80,
+      "method": "default",
+      "images": [
+        "2",
+        0
+      ],
+      "tags": [
+        "105",
+        0
+      ]
+    },
+    "class_type": "EagleFeederAnimatedWebp",
+    "_meta": {
+      "title": "EagleFeeder (AnimatedWEBP)"
+    }
+  },
+  "101": {
+    "inputs": {
+      "batch_index": 0,
+      "length": 1,
+      "image": [
+        "2",
+        0
+      ]
+    },
+    "class_type": "ImageFromBatch",
+    "_meta": {
+      "title": "ImageFromBatch"
+    }
+  },
+  "103": {
+    "inputs": {
+      "model": "wd-eva02-large-tagger-v3",
+      "threshold": 0.3500000000000001,
+      "character_threshold": 0.85,
+      "replace_underscore": false,
+      "trailing_comma": false,
+      "exclude_tags": "",
+      "image": [
+        "101",
+        0
+      ]
+    },
+    "class_type": "WD14Tagger|pysssss",
+    "_meta": {
+      "title": "Tagger"
+    }
+  },
+  "104": {
+    "inputs": {
+      "threshold_detect": 0.15,
+      "detect_female_face": false,
+      "detect_male_face": false,
+      "detect_armpits": false,
+      "detect_female_breast": true,
+      "detect_male_breast": false,
+      "detect_belly": false,
+      "detect_female_genitalia": true,
+      "detect_male_genitalia": true,
+      "detect_buttocks": false,
+      "detect_anus": true,
+      "detect_feet": false,
+      "images": [
+        "101",
+        0
+      ]
+    },
+    "class_type": "RatingCheckerNudeNet",
+    "_meta": {
+      "title": "Rating Checker (NudeNet)"
+    }
+  },
+  "105": {
+    "inputs": {
+      "delimiter": ",",
+      "string1": [
+        "103",
+        0
+      ],
+      "string2": [
+        "104",
+        0
+      ]
+    },
+    "class_type": "JoinStrings",
+    "_meta": {
+      "title": "Join Strings"
+    }
+  },
+  "109": {
+    "inputs": {
+      "mode": "on empty queue",
+      "volume": 0.5,
+      "file": "notify.mp3",
+      "any": [
+        "105",
+        0
+      ]
+    },
+    "class_type": "PlaySound|pysssss",
+    "_meta": {
+      "title": "PlaySound 🐍"
+    }
+  },
+  "114": {
+    "inputs": {
+      "UNKNOWN": true,
+      "prev_lora": [
+        "115",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "115": {
+    "inputs": {
+      "UNKNOWN": true
+    },
+    "_meta": {}
+  },
+  "116": {
+    "inputs": {
+      "dimensions": "53:30(1.767) - 848x480",
+      "invert": false,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImageCustomPresets",
+    "_meta": {
+      "title": "Image Size"
+    }
+  }
+}

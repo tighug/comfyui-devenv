@@ -1,0 +1,498 @@
+{
+  "110": {
+    "inputs": {
+      "value": "bad quality, worst quality, jpeg_artifacts, bad_anatomy, bad_hands, multiple_views, signature, watermark, censored,"
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "Negative Prompt"
+    }
+  },
+  "111": {
+    "inputs": {
+      "dimensions": "7:4(1.75) - 1344x768",
+      "invert": false,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImageCustomPresets",
+    "_meta": {
+      "title": "Image Size"
+    }
+  },
+  "114": {
+    "inputs": {
+      "value": "masterpiece, newest, "
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "Positive Prompt"
+    }
+  },
+  "143": {
+    "inputs": {
+      "ckpt_name": "SDXL/flanimeIllustriousXL_v16.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "255": {
+    "inputs": {
+      "images": [
+        "260:123",
+        1
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "261:252": {
+    "inputs": {
+      "value": "kneepit_sex,"
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "Tmp"
+    }
+  },
+  "261:248": {
+    "inputs": {},
+    "class_type": "Any Switch (rgthree)",
+    "_meta": {
+      "title": "Any Switch"
+    }
+  },
+  "261:249": {
+    "inputs": {
+      "any_03": [
+        "261:204",
+        0
+      ]
+    },
+    "class_type": "Any Switch (rgthree)",
+    "_meta": {
+      "title": "Any Switch"
+    }
+  },
+  "261:231": {
+    "inputs": {
+      "any_04": [
+        "261:200",
+        0
+      ]
+    },
+    "class_type": "Any Switch (rgthree)",
+    "_meta": {
+      "title": "Any Switch"
+    }
+  },
+  "261:209": {
+    "inputs": {
+      "any_04": [
+        "261:217",
+        0
+      ],
+      "any_05": [
+        "261:231",
+        0
+      ]
+    },
+    "class_type": "Any Switch (rgthree)",
+    "_meta": {
+      "title": "Any Switch"
+    }
+  },
+  "261:238": {
+    "inputs": {},
+    "class_type": "Any Switch (rgthree)",
+    "_meta": {
+      "title": "Any Switch"
+    }
+  },
+  "261:217": {
+    "inputs": {},
+    "class_type": "Any Switch (rgthree)",
+    "_meta": {
+      "title": "Any Switch"
+    }
+  },
+  "261:200": {
+    "inputs": {
+      "value": "flat_chest, small_breasts, medium_breasts, large_breasts, huge_breasts, perky_breasts, pointy_breasts, sagging_breasts, cleavage, backboob, sideboob, underboob, areola_slip, nipple_slip, breasts_apart, breasts_out, hanging_breasts, one_breast_out, "
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "Breasts"
+    }
+  },
+  "261:204": {
+    "inputs": {
+      "value": "doyagao,smirk,smug,troll_face\n"
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "Smug"
+    }
+  },
+  "261:1": {
+    "inputs": {
+      "STRING": [
+        "261:209",
+        0
+      ],
+      "delimiter": ",",
+      "splitlines": false,
+      "strip": true
+    },
+    "class_type": "GODMT_SplitString",
+    "_meta": {
+      "title": "Prompts"
+    }
+  },
+  "260:128": {
+    "inputs": {
+      "text": "%aux%['index']",
+      "output_type": "FORMULA",
+      "aux": [
+        "260:131",
+        0
+      ]
+    },
+    "class_type": "DataMonitor",
+    "_meta": {
+      "title": "Get Index"
+    }
+  },
+  "260:135": {
+    "inputs": {
+      "index": [
+        "260:128",
+        0
+      ],
+      "LIST": [
+        "261:1",
+        1
+      ]
+    },
+    "class_type": "GODMT_BatchGetByIndex",
+    "_meta": {
+      "title": "Batch: Get By Index"
+    }
+  },
+  "260:262:141": {
+    "inputs": {
+      "value": ")"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "String"
+    }
+  },
+  "260:262:140": {
+    "inputs": {
+      "value": "("
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "String"
+    }
+  },
+  "260:262:142": {
+    "inputs": {
+      "delimiter": "",
+      "clean_whitespace": "true",
+      "text_a": [
+        "260:262:140",
+        0
+      ],
+      "text_b": [
+        "260:135",
+        0
+      ],
+      "text_c": [
+        "260:262:141",
+        0
+      ]
+    },
+    "class_type": "Text Concatenate",
+    "_meta": {
+      "title": "Text Concatenate"
+    }
+  },
+  "260:139": {
+    "inputs": {
+      "delimiter": ",",
+      "string1": [
+        "260:262:142",
+        0
+      ],
+      "string2": [
+        "114",
+        0
+      ]
+    },
+    "class_type": "JoinStrings",
+    "_meta": {
+      "title": "Join Strings"
+    }
+  },
+  "260:259": {
+    "inputs": {
+      "length": "18",
+      "ANY": [
+        "261:1",
+        1
+      ]
+    },
+    "class_type": "GODMT_GetLength",
+    "_meta": {
+      "title": "Get Length"
+    }
+  },
+  "260:263": {
+    "inputs": {
+      "value": "a-1",
+      "a": [
+        "260:259",
+        0
+      ]
+    },
+    "class_type": "SimpleMath+",
+    "_meta": {
+      "title": "🔧 Simple Math"
+    }
+  },
+  "260:131": {
+    "inputs": {
+      "start": 0,
+      "step": 1,
+      "end": [
+        "260:263",
+        0
+      ],
+      "condition": "True"
+    },
+    "class_type": "LoopOpen",
+    "_meta": {
+      "title": "🔃 Loop Open"
+    }
+  },
+  "260:123": {
+    "inputs": {
+      "condition": "True",
+      "LOOP": [
+        "260:131",
+        0
+      ],
+      "data": [
+        "260:125",
+        0
+      ]
+    },
+    "class_type": "LoopClose",
+    "_meta": {
+      "title": "⏹️ Loop Close"
+    }
+  },
+  "260:126": {
+    "inputs": {
+      "text_x": 10,
+      "text_y": 2,
+      "height": 48,
+      "font_size": 32,
+      "font_color": "white",
+      "label_color": "black",
+      "font": "FreeMonoBoldOblique.otf",
+      "text": [
+        "260:135",
+        0
+      ],
+      "direction": "up",
+      "image": [
+        "260:264:124",
+        0
+      ]
+    },
+    "class_type": "AddLabel",
+    "_meta": {
+      "title": "Add Label"
+    }
+  },
+  "260:125": {
+    "inputs": {
+      "method_for_images": "lanczos",
+      "input1": [
+        "260:131",
+        1
+      ],
+      "input2": [
+        "260:126",
+        0
+      ]
+    },
+    "class_type": "FallbackAnyBatch",
+    "_meta": {
+      "title": "Fallback Any Batch"
+    }
+  },
+  "260:264:124": {
+    "inputs": {
+      "samples": [
+        "260:264:137",
+        0
+      ],
+      "vae": [
+        "143",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "260:264:137": {
+    "inputs": {
+      "seed": 565807815322261,
+      "steps": 20,
+      "cfg": 3,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": [
+        "143",
+        0
+      ],
+      "positive": [
+        "260:264:256",
+        0
+      ],
+      "negative": [
+        "260:264:257",
+        0
+      ],
+      "latent_image": [
+        "111",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "260:264:257": {
+    "inputs": {
+      "clip": [
+        "143",
+        1
+      ],
+      "text": [
+        "110",
+        0
+      ]
+    },
+    "class_type": "Text to Conditioning",
+    "_meta": {
+      "title": "Negative"
+    }
+  },
+  "260:264:256": {
+    "inputs": {
+      "clip": [
+        "143",
+        1
+      ],
+      "text": [
+        "260:139",
+        0
+      ]
+    },
+    "class_type": "Text to Conditioning",
+    "_meta": {
+      "title": "Positive"
+    }
+  },
+  "254:94": {
+    "inputs": {
+      "model": "wd-eva02-large-tagger-v3",
+      "threshold": 0.3500000000000001,
+      "character_threshold": 0.85,
+      "replace_underscore": false,
+      "trailing_comma": false,
+      "exclude_tags": "",
+      "image": [
+        "260:123",
+        1
+      ]
+    },
+    "class_type": "WD14Tagger|pysssss",
+    "_meta": {
+      "title": "Tagger"
+    }
+  },
+  "254:95": {
+    "inputs": {
+      "threshold_detect": 0.15,
+      "detect_female_face": false,
+      "detect_male_face": false,
+      "detect_armpits": false,
+      "detect_female_breast": true,
+      "detect_male_breast": false,
+      "detect_belly": false,
+      "detect_female_genitalia": true,
+      "detect_male_genitalia": true,
+      "detect_buttocks": false,
+      "detect_anus": true,
+      "detect_feet": false,
+      "images": [
+        "260:123",
+        1
+      ]
+    },
+    "class_type": "RatingCheckerNudeNet",
+    "_meta": {
+      "title": "Rating Checker (NudeNet)"
+    }
+  },
+  "254:96": {
+    "inputs": {
+      "delimiter": ",",
+      "string1": [
+        "254:94",
+        0
+      ],
+      "string2": [
+        "254:95",
+        0
+      ]
+    },
+    "class_type": "JoinStrings",
+    "_meta": {
+      "title": "Join Strings"
+    }
+  },
+  "254:97": {
+    "inputs": {
+      "folder_name": "Tmp",
+      "eagle_host": "http://host.docker.internal:41595",
+      "eagle_token": "",
+      "embed_workflow": true,
+      "images": [
+        "260:123",
+        1
+      ],
+      "tags": [
+        "254:96",
+        0
+      ]
+    },
+    "class_type": "EagleFeederPng",
+    "_meta": {
+      "title": "EagleFeeder (PNG)"
+    }
+  }
+}
